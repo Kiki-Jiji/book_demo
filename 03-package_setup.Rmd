@@ -1,0 +1,163 @@
+# Setting up the project in R
+
+## Getting started
+
+*Make sure this line up with the end of chapter 2*
+
+Now that the project is set-up it is time to build the package skeleton. The aim of this chapter is to walk through building this structure, allowing the R code preforming the functions to be added later. By the end of the chapter you should have an R package that builds. This chapter will mainly be working in RStudio.
+
+##R Studio
+
+Open RStudio. First we start a new project. The reason for this is to organise your work into a *project*: a folder on your computer that holds all the files relevant to that particular piece of work. This folder is where you will work from. This makes dealing with file paths a lot easier <span style="color:red">Aexplanation of filepath here?</span> . In the top left of RStudio, select `File > New project > Existing Directory > browse` and now select the folder where the git project was set-up. This will be the folder where the GitLab repository was cloned, and the folder will be called the name of the GitLab repository. 
+
+**once chapter 2 is done specify this clear**
+
+##R Project
+
+You will now be in project called the same as your GitLab repository. On an ONS laptop R you will need to change the *.libPaths* (this is the library where RStudio looks for packages, the library is just a folder where all the code for packages is stored) as the default will be on the network drive. This works, but runs slowly as RStudio has to access the networked drive every time it accesses a package. You want to change this to the D: drive (which is not networked, it's a local hard drive): 
+
+```
+.libPaths("D:/R/lib")
+```
+
+## R packages needed
+
+To install packages use the command `install.packages()` and make sure the package is loaded in your session, by using the command `library()`. For example to install the package tidyr:
+
+```{R eval= FALSE} 
+install.packages("tidyr")
+library(tidyr)
+```
+You only need to install the package once (caveat: the package will need updating occasionally) but you will need to load the package into the library in every new R session. 
+ 
+You will need the following packages installed and before you begin:
+
+**devtools** - this sets up the package, documents the package, tests that the package has been set up correctly (e.g. with all documentation etc.), checks that the code runs from beginning to end, and builds the package if all tests are passed
+
+**usethis** - this package is replacing devtools. Devtools is being depreciated so going forward we may need to use this instead
+
+**testthat** - does unit tests for functions. Unit tests check that the code is doing what you expect it to do (e.g. it checks classes, outputs etc.). These are only tested when you build the package and these unit tests have to pass for the package to built 
+
+**futile.logger** - active tests for data validation (e.g. checks the data for missing values, negative values that don't make sense etc.). These tests are conducted each time you run the function 
+
+[Blog](https://www.r-bloggers.com/better-logging-in-r-aka-futile-logger-1-3-0-released/) to explain futile logging and difference between types of testing: 
+
+**roxygen2** - allows for the documentation of functions. This automatically installs with devtools. Devtools will call roxygen2 with `devtools::document`, adding the documentation to the package, so you will not need to install separately
+
+**packrat** (optional) - this takes package dependencies into account, ensuring that in future when packages that are used in your package are updated, then this will automatically update in your package and it will still work. Whilst in principle we need to account for package dependencies, we're looking into other options as packrat may not be the optimal way of taking care of this
+
+## Package Structure
+ 
+* R/ 
+    + first_function.R
+    + second_function.R
+    + third_unction.R
+* Man/
+* Tests/
+*.gitignore
+*.Rbuildignore
+*.RData
+*.Rhistory
+*compR.Rproj
+*DESCRIPTION
+*NAMESPACE
+*README.md
+ 
+
+**A note on all the folders and files in the package** Some need to be edited, some it is best to not edit unless you are an advanced user.
+
+**R** - This folder contains all your functions. One script should be used per function. This will covered more in Chapter 6. 
+
+**Man** - This folder contains the documentation. This will be automatically generated, as described in Chapter 5. Do not edit this folder manually.
+
+**Tests** - This folder will contains unit tests for advanced packages. More description in Chapter 8.
+
+**.gitignore** - a gitignore file specifies intentionally untracked files that git should ignore. In general the .gitignore is used to ensure that sensitive documents are not accidentally uploaded to a central repository open to everyone. For example. `*.xlsx` added to the gitignore will make sure any Excel document with the file type .xlsx will not be pushed to a git repository, so it is kept on your local computer only. 
+
+**.Rbuildignore** **.RData** **.Rhistory**  - Needed for the package.
+
+**compR.Rproj** - Project file for Rstudio, don't touch. 
+
+**DESCRIPTION** - Key info on the package e.g. authors, contact, package version, imports (other packages needed to run this package).
+
+**NAMESPACE** - For a function to be usable outside of your package, you must export it. By default roxygen2 doesn't export anything from your package. If you want an object to be publically available, you must explicitly tag it with @export.
+
+**README.md** - This file contains information on the package. It will automatically be displayed in a git repository, so it can be used to describe the package to anyone who views the repository. Typically contains a description of the package, the functions it contains, and a typical use case. For a small RAP project this might be enough, however a longer description might also be needed in a separate document. 
+
+
+## Creating the package
+
+Rather than create all the necessary packages we use the `usethis` package to automatically create the necessary structure. Type into the console: 
+
+```{r eval=FALSE}
+usethis::create_package(add the file path here e.g. d:/git/folder_name)
+```
+You should notice that the package has now be filled with new files. Next we'll get the package ready to build.
+
+###Descrption
+
+First edit the description file. Select the file and it will open in a window. There will be a minimal bare-bones description already there. It should look something like: 
+
+```
+Package: mypackage
+Title: What The Package Does (one line, title case required)
+Version: 0.1
+Authors@R: person("First", "Last", email = "first.last@example.com",
+                  role = c("aut", "cre"))
+Description: What the package does (one paragraph)
+Depends: R (>= 3.1.0)
+License: What license is it under?
+LazyData: true
+Change the description file created with the project (you'll find the description file on the bottom right corner of RStudio under 'file'). Add your own description here. You can do this in R or in GitBash (but doing this in R is recommended and easier). You will need to add title, description, authors etc. for the project. 
+```
+This should be edited, but be careful to keep the format/syntax the same otherwise this will cause an error and the package wil not build. Change the Package, Title, Author@R, Description. An example description might look like:  
+
+```
+Package: compR
+Title: Generates Compliance Report
+Version: 0.0.0.9000
+Authors@R: c(person("Joshua", "Halls", email="Joshua.Halls@ons.gov.uk", role="cre"), person("Catrin", "Cheung", email="Catrin.Cheung@ons.gov.uk", role="aut"))
+Description: Caculates Compliance costs 
+License: What license it uses
+Encoding: UTF-8
+LazyData: true
+Imports: 
+    stringr,
+    tidyr
+RoxygenNote: 6.1.1
+Suggests: 
+    testthat 
+```
+
+## Check the package
+
+Your package should now build! But first we check the package. The command:
+
+```
+devtools::check
+```
+
+will run a series of 50 checks on the package. The tests are explained in [R Packages](HTTP://r-pkgs.had.co.nz/check.html )
+
+This will not check whether the code works fine or makes sense, only that the package is setup correctly. It will separate issues into three categories:
+
+- Errors, which are severe problems and prevent the package from building. If there is an error devtools will stop checking. You need to fix the error and then re-run. 
+- Warnings, these are issues which should be fixed at some point, but are not necessarily big issues an can be left for now. 
+- Notes, these are small technical suggestions and it is not necessary to fix these unless you want to get your package on CRAN. 
+
+So, run `devtools:check()`, fix any errors, but for now ignore warnings and notes. Consult the book R Packages if you are stuck.
+
+## Building the package
+
+If there are no errors then it is time to build the package! When in Rstudio you can select *Build* in the top ribbon, and then *Build all*, or use:
+
+```
+ctl + shift + b 
+```
+
+The R session will re-load and the package should now be built. You can check that it worked by trying to library your package, if it works then your package skeleton is complete.
+
+```{r, eval=FALSE}
+library(package_name)
+```
+

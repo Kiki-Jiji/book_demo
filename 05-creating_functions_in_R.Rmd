@@ -1,0 +1,80 @@
+# Creating functions in R
+
+**maybe include something on how to creat a function, such as how R defines functions usoing {}**
+** also maybe discuss using # to comment in code?**
+
+Make sure you are on a new branch in Git (follow instructions on how to do this using GitBash in chapter 4). This branch should reflect what the code/function stored on it will achieve e.g. clean_data, read_data.  
+
+In R it's best to also create a new file for each function. Having individual branches and files for your functions will make it easier to track and make changes to individual functions. 
+
+For each function you will need to include documentation on how to use the function, arguments used etc. 
+
+The roxygen2 package will do this automatically, if you format your code in a particular way:
+
+```
+#'@title here insert the title of your function
+#' 
+#'@description here insert the description for your function
+#' 
+#'@details add more detail on you function here
+#' 
+#'@param specify the paramaters of the function here (e.g. data frame, etc.)
+#'
+#'@param for each paramater you will need to specify them seperately, therefore information on your second paramater would be stored here
+#'
+#'@return specifies what the function should return
+#' 
+#'@export
+```
+
+The tag `#'@export` ensures that your function can be used by others.
+
+Be careful with how you format this. Deviations to the above will most likely result in errors.
+
+Note that you will need to include your documentation *before* your function. You can write and develop your function first, and then add details of your documentation later, but make sure that you format your script in a way that ensures that it will run through the documentation before it runs the code. 
+
+We'll outline this with an example. For the purpose of simplicity, we will create a function that adds two numbers. This is how you'd set it out:
+
+```
+#'@title add_xy
+#'
+#'@description This function adds together two numbers.
+#' 
+#'@param x A number.
+#'
+#'@param y A number.
+#'
+#'@return The sum of x and y.
+#'
+#'@examples
+#' add(1, 1)
+#' add(10, 1)
+#'
+#'@export
+#'
+
+add <- function(x, y) {
+  x + y
+}
+
+```
+
+Using this format will ensure that the documentation for your function is included. The advantage of RAP is the ability to include the documentation with the code. Using this method every function will have detailed documentation describing how it is used allowing others, or your future self, to know what the functions uses as an input, what it outputs, and what it does between. 
+
+To update the 'man' folder in your project (which contains documentation and was created automatically with the project) you will need to run the following:
+
+```
+devtools::documentation
+```
+Do not manually edit the content of your 'man' folder as this will lead to errors. By running the code above roxygen2 will automatically update it for you!
+
+there are loads of different arguments and parameters that you can include on your package........ 
+
+
+
+**<span style="color:red">Need to check with Josh from here on:</span>**
+
+
+You also need to specify which packages/functions you need to import, for your package to work. This can be done with `import()` and the package/function name
+
+

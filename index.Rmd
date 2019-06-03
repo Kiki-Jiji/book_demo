@@ -1,0 +1,30 @@
+--- 
+title: "RAP Guide for ONS"
+author: "Joshua & Catrin"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+output: bookdown::gitbook
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+github-repo: rstudio/bookdown-demo
+description: "This is a guide for RAP at the ONS"
+---
+
+# Introduction
+
+The aim of this guide to provide a guide for RAP at the ONS. This is meant to be a more comprehsive guide for RAP at the ONS aimed at those newer to coding and is a suppliment to the [RAP Companion](https://ukgovdatascience.github.io/rap_companion/) and [RAP course on Udemy](https://www.udemy.com/reproducible-analytical-pipelines/?src=sac&kw=reprod). These materials are excellent and provide an in-depth look at RAP in R.  
+
+##title
+
+what the point of the guide, it's relationship to the RAP course/companion
+
+any conventions
+
+defintions 
+
+
+Note: we refer to our package on GitLab as a 'project' throughout, however this can be interchanged with the term 'repository'.
+
+Terminology - We refer to Git throughout - explain how this relates to GitBash

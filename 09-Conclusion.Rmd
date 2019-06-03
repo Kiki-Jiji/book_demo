@@ -1,0 +1,43 @@
+# Useful resources
+
+- Data Camp (Git, packages, any R course)
+- Git guide
+- Git - online training
+
+ Software Carpetary
+
+From Software Carpetary:  One feature unique to R is that the return statement in functions are not required. R automatically returns whichever variable is on the last line of the body of the function. But for clarity, explicitly define the return statement."
+From Software Carpetary: Lesson on [functions](https://swcarpentry.github.io/r-novice-gapminder/10-functions/index.html)
+
+[RMarkdown guide](https://bookdown.org/yihui/rmarkdown/html-document.html)
+
+## GSS RAP resources
+- [UDEMY RAP course](https://www.udemy.com/reproducible-analytical-pipelines/)
+- [RAP companion guide](https://ukgovdatascience.github.io/rap_companion/)
+- Gov. RAP GitHub repository
+- [List of GSS RAP projects](https://docs.google.com/spreadsheets/d/1pwbcXwuMT4zignv5hghDS-eMxTkogwpX8Bt3bCL7SSA/edit#gid=1796469886) 
+- Govdown??
+- [ONS DAP good practice guide](https://share.sp.ons.statistics.gov.uk/sites/odts/wiki/Wiki/Components%20Introduction.aspx)
+- 
+- [GSS RAP champions network page](https://gss.civilservice.gov.uk/about-us/champion-networks/reproducible-analytical-pipeline-rap-champions/#more-information-about-rap-champions)
+- [List of GSS RAP projects](https://docs.google.com/spreadsheets/d/1pwbcXwuMT4zignv5hghDS-eMxTkogwpX8Bt3bCL7SSA/edit#gid=1796469886)
+- [Gov. RAP website](https://ukgovdatascience.github.io/rap-website/article-infrastructure.html)
+
+## Resources from NHS Scotland
+
+- [RAP checklist](https://www.isdscotland.org/About-ISD/Methodologies/_docs/ChecklistforTPPandRAPprocessesv0-2.pdf)
+- [RAP framework - levels of RAP](https://www.isdscotland.org/About-ISD/Methodologies/_docs/Reproducible_Analytical_Pipelines_paper_v1.4.pdf)
+- [R resources for beginners](https://github.com/Health-SocialCare-Scotland/R-Resources/blob/master/Intro%20to%20R-NSS.md)
+- [GitHub guidance](https://github.com/Health-SocialCare-Scotland/GitHub-guidance)
+- [Transforming publications toolkit](https://github.com/NHS-NSS-transforming-publications/Toolkit)
+
+
+## Various RAP blogs 
+
+......
+
+## Unit testing
+
+- [testthat](https://www.rdocumentation.org/packages/testthat/versions/2.0.1)
+- [testthat](http://r-pkgs.had.co.nz/tests.html)
+- [testthat](https://journal.r-project.org/archive/2011-1/RJournal_2011-1_Wickham.pdf)

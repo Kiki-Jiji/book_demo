@@ -1,0 +1,118 @@
+# Typical Git workflow
+
+## First push to GitLab
+
+By now you should have the basic package stored on the D: drive of your local device (we covered this in Chapter 2) and built the basic skeleton of your package in RStudio (Chapter 3). 
+
+Note that all of this will have been done on the master branch of your project. This master branch should only include the structure of the package, code and functions for manipulating and analyzing the data will be stored on individual add-on branches later **(more on this in chapter X).** 
+
+Now that you have your basic package, you will need to push your changes to the master branch on GitLab. This is done in three steps: 
+
+**1. Adding**
+
+```
+git add . -n
+```
+
+This shows which files would be added, but doesn't actually add the files. Once you are happy that these are the files you want to add, you can actually add them using:
+
+```
+git add . 
+```
+
+And these files will be added to the local Git project on your device.
+
+**2. Committing**
+
+You are now ready to commit the files to the local Git on your device. To do this use the command:
+
+```
+git commit -m "add a comment"
+```
+
+You **MUST** add a comment when you commit. The comment should explain the change you have made. 
+
+If you are working independently on a project then this is fine, using the local Git would work for version control. But if working collaboratively you now need to push on to GitLab. 
+
+**3. Pushing**
+
+To push changes to the master branch on GitLab use the following command:
+
+```
+git push origin master -u
+```
+
+You only need to use this command the first time you are pushing on a new branch. The next time you update this master branch you only need to use the command:
+
+```
+git push
+```
+
+With the first push, GitBash will ask for a password for the SSH key. Enter this password, and now you will have added the changes from your master branch on your local device to the remote GitLab repository.
+
+
+## Fetching branches from GitLab
+
+As you're working collaboratively on a project, you'll need to ensure that you're working with the latest version of the project. Others may have made changes since you last worked on it. To update your local device with updates made by others, you'll need to fetch and pull from GitLab.
+
+To fetch a branch from GitLab you'll firstly need to ensure that you are located in the project. Do this by using the command `cd` followed by the location where your project is stored e.g.:
+
+```
+cd d:/git/CompR
+```
+
+Now that you are in the correct location, you can fetch the latest version of the project from GitLab. Use the command:
+
+```
+git fetch
+```
+
+This will fetch all the branches on the GitLab repository to your local device. If you only want to fetch one branch, then you can use the command, followed by the name of the branch you want to fetch e.g.:
+
+```
+git fetch master
+```
+
+Now that the branch(es) are on your local computer, you need to ensure that the version you have just fetched, matches the one on your local device. 
+
+Do this by using the command:
+
+```
+git pull
+```
+
+This will ensure that you have the latest version of the project, and are now ready to work on it. 
+
+## Creating new branches on GitLab
+
+Now that you have the master branch with basic package information, you can start adding other branches to the project. It's best to create a new branch for each function you want to develop, and only when you're confident that the function is working and passes all tests, you can then merge this to the master branch. 
+
+Using GitBash you can create a new branch using: 
+
+```
+git checkout -b new_branch
+```
+
+Note this branch will only exist on your local computer until you push it onto GitLab.
+
+You can also create a new branch manually on the ONS GitLab (in this case you don't need to push to GitLab).
+
+## Useful Git commands
+
+If you forget to fetch and pull, but have made some changes to your version, you won't be able to pull after making these changes. 
+
+If you haven't made any significant changes on your local device, and are happy to remove all local changes from your working copy, simply stash them:
+
+```
+git stash save --keep-index
+```
+
+And if you don't need them anymore, you now can drop that stash:
+
+```
+git stash drop
+```
+
+[This is a useful guide for understanding Git](https://git-scm.com/book/en/v2)
+
+<span style="color:red">Add more useful commands as we go along - can't think of any more at the moment but I'm sure there are! </span> 

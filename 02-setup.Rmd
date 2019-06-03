@@ -1,0 +1,136 @@
+
+# Setting up
+
+## Software to install thorugh Service Desk
+
+Before beginning, you will need to set up the following by raising a Service Desk call (Service Desk -> I want something -> Software / Applications -> Desktop / Laptop Software -> Add/Remove) for the following:
+
+**RStudio** - when raising the Service Desk call for this, select the latest version of *RStudio* and *The R Foundation*. You will need to install both. 
+
+Set-up RStudio and artifactory <span style="color:red">I want to collapse this - not sure how to do it though</span>
+
+Artifactory is an environemnt which allows you to install packages to R. 
+
+1. On your D: drive create a folder called R.
+2. Inside there create a folder called Lib, and open that folder.
+3. **<span style="color:red">Copy this file??? - Josh I'm not sure what is meant by this (I found these instrucitons on the Intro to R teaching materials. Do you remember how we created an .Rprofile??</span>**. Save it as .Rprofile - make sure it has the dot at the front!
+4. In your Start menu, locate RStudio. Right click and pin to start menu.
+5. Open your Start menu and right click on RStudio, then go to properties.
+6. Where it says "start in" delete the contents and replace with D:\R\lib and click
+apply.
+7. Go to http://art-p-01/artifactory/webapp/#/login, log in with your Windows username and password.
+8. Click on your username (top right), re-type your password.
+9. Next to Encrypted Password click the copy button (the clipboard).
+10. Now open the .Rprofile in notepad, replace username with your user name and hashed Password with what you copied from the artifactory and save. You always need to start R from the pin in your start menu.
+
+Every time you change your windows password you will need to go and fetch your new hashed password from the artifactory and update this on your .Rprofile (notebook).
+
+<span style="color:red">end of collapse</span>
+
+You need to make sure that RStudio, .Rpofiile and artifactory have been set up correctly before proceeding. 
+
+**RTools** - RTools compiles code and builds packages. You will need this if you plan on creating packages for your RAP code (recommended).
+
+**Command line access** - you need command line access in order to use GitBash. You won't need to use the command line directly however.
+
+**GitBash** - GitBash is the platform used to communicate changes between your local device and the remote collaborative GitLab project. This is essential for collaborative working. It is also an effective way to version control your work, therefore even if working independently on code, it is recommended to log changes by using GitBash. 
+
+If you haven't used GitBash before, then you'll need to set up your details on the local device. Firstly set a GitBash username by inserting your name in the quotation marks in the following command on GitBash:
+
+```
+$ git config --global user.name "Mona Lisa"
+```
+
+To confirm that you have set the GitBash username correctly, type the command:
+
+```
+$ git config --global user.name
+> Mona Lisa
+```
+This should print your name. 
+
+Repeat the same with `git config --global user.email "user.email@ons.gov.uk"`
+
+<span style="color:red">Josh- have I missed out on anything here? do we need to add password??</span>
+
+**ONS GitLab project** - GitLab is the internal ONS version of GitHub and is a space for storing code. All who are involved with the development and coding of this work should have access to a 'project', set up specifically for this work, on the ONS GitLab. This is essential for collaborative working. GitLab allows multiple people to work on code simultaneously, and enables version control and traceability of the work.
+
+With GitLab, you can't manually create projects so you'll need to raise a call for this, specifying who can have access to the project. <span style="color:red">You will most likely be granted developer access to the project, but you can change this?</span> 
+
+The name you choose for this project will be the name of your package. You need to consider R package naming conventions when doing this. 
+
+Summary of naming conventions:
+
+- Only include a-z alphabetical characters (both lower case and capitals are ok)
+- Don't use special characters (?!/ etc.), numbers, underscores
+
+<span style="color:red">add link to naming good practice guidance here - josh do you know of any link??</span>
+
+
+## Getting started with ONS GitLab
+
+By now you should have had your project set up by raising a Service Desk call. This is where all the code and documentation for your project will be stored.
+
+When the project is set up, it will automatically contain a master branch. This is what you will be working on initially when setting up the skeleton package. Later when you're writing code for functions (to clean, link, analyse data etc.), you'll need to create new branches <span style="color:red">(more on this in section X)</span> 
+
+### Set up SSH key
+
+You will need an SSH (Secure Shell) key to connect your local computer to the GitLab securely. 
+There is guidance on setting up the key on [GitLab](https://docs.gitlab.com/ee/ssh/)
+
+To set up the key it's best to use GitBash. To generate the key in GitBash, the command used is:
+
+```
+ssh-keygen -t ed25519 -C "user.email@ons.gov.uk"  
+```
+
+- **-t** tells you which key you want to set up
+- **ed25519** following best practice this is the standard key, as it is more secure and has better performance over other types, such as RSA, DSA, ECDSA keys. 
+- **-C** adds a comment
+
+GitBash will ask you to set up a password, or you can leave it blank without a password, but this is bad practice. Remember the password, as you will need it later.
+
+This command generates a public and private key. It will also automatically generate a folder including these keys in your default directory. This is the H: drive on an ONS laptop. 
+
+To to copy the public key to the clipboard use the command:
+
+```
+cat ~/.ssh/id_ed25519.pub | clip
+```
+
+You can then paste this to GitLab project <span style="color:red">Add screenshot of where to paste the key?</span>. Now the local computer can communicate with GitLab securely. 
+
+
+## Cloning project to local laptop
+
+Now you are ready to clone the project from GitLab to your laptop. It is usually best to clone it to the D: drive.
+
+In GitBash make sure that you are located in your D: drive, inside the folder where you want the project to be stored.
+
+<span style="color:red">Add instructions on how to check which directory you are in using bash - not sure what this is - Josh?</span>
+
+If you need to change directory in GitBash, use the command:
+
+```
+cd d:/git
+```
+
+This will take you to the 'git' folder in your D: drive. When you clone the project from GitLab it will then go into this folder. 
+
+Go to the GitLab project and copy the HTTP for the project. This is accessed by clicking on the dropdown where it says 'SSH' and changing this to 'HTTP'<span style="color:red">Add screenshot of where to find this</span>. Copy the unique HTTP for this project. 
+
+Now go to GitBash, paste the HTTP and clone the project using the command:
+
+```
+git clone http://np2rvlapxx507/Data_Capability/RAP_Guidance.git
+```
+
+<span style="color:red">do we need to pull form GitLab here or is it automatically on the local drive when you set up the SSH key??</span>
+
+
+After cloning the repository, instead of using `git status` to check the whether it has cloned. Use `cd` to locate to the repository on your local computer e.g. if you have just cloned compR into the git folder then check by using the command `cd d:/git/compR` to see whether it is there. 
+
+**Note** - you can also clone by copying the SSH key rather than the HTTP. With ONS GitLab however the SSH approach has proven to be unreliable, and we recommended using HTTP.
+
+*If* you are following the SSH key approach, you will need to enter a password to establish the SSH key connection.
+
