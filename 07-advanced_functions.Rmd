@@ -6,7 +6,7 @@ We will briefly examine using conditional logic in function arguments to allow y
 * Allow different inputs, such as a function that includes a t-test, an a function argument could be used to alter the significance level used. 
 * For development. A function could have an argument that switches between join g all the data or dropping missing values, so whilst the data is still coming in the function could be used on the available data to see what the output might look like. 
 
-##Arguments for functions 
+## Arguments for functions 
 
 To demonstrate we will use the function that we built in the last chapter. We can take the first function call, and add an argument. To start we'll create an argument that calls a plot. We call the argument plot (but it can be called anything) and set the default to FALSE. This will mean that if we call the argument without specifying plot the default will be not to generate a plot, we would need to call `read_data(plot = TRUE)` to get a plot. 
 

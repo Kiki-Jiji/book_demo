@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 2 Setting up | RAP Guide for ONS</title>
+  <meta name="description" content="This is a guide for RAP at the ONS" />
+  <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 2 Setting up | RAP Guide for ONS" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a guide for RAP at the ONS" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 2 Setting up | RAP Guide for ONS" />
+  
+  <meta name="twitter:description" content="This is a guide for RAP at the ONS" />
+  
+
+<meta name="author" content="Joshua &amp; Catrin" />
+
+
+<meta name="date" content="2019-06-03" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html">
+<link rel="next" href="setting-up-the-project-in-r.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A ONS guide to RAP</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="setting-up.html"><a href="setting-up.html"><i class="fa fa-check"></i><b>2</b> Setting up</a><ul>
+<li class="chapter" data-level="2.1" data-path="setting-up.html"><a href="setting-up.html#software-to-install-thorugh-service-desk"><i class="fa fa-check"></i><b>2.1</b> Software to install thorugh Service Desk</a></li>
+<li class="chapter" data-level="2.2" data-path="setting-up.html"><a href="setting-up.html#getting-started-with-ons-gitlab"><i class="fa fa-check"></i><b>2.2</b> Getting started with ONS GitLab</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="setting-up.html"><a href="setting-up.html#set-up-ssh-key"><i class="fa fa-check"></i><b>2.2.1</b> Set up SSH key</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="setting-up.html"><a href="setting-up.html#cloning-project-to-local-laptop"><i class="fa fa-check"></i><b>2.3</b> Cloning project to local laptop</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="setting-up-the-project-in-r.html"><a href="setting-up-the-project-in-r.html"><i class="fa fa-check"></i><b>3</b> Setting up the project in R</a><ul>
+<li class="chapter" data-level="3.1" data-path="setting-up-the-project-in-r.html"><a href="setting-up-the-project-in-r.html#getting-started"><i class="fa fa-check"></i><b>3.1</b> Getting started</a></li>
+<li class="chapter" data-level="3.2" data-path="setting-up-the-project-in-r.html"><a href="setting-up-the-project-in-r.html#r-packages-needed"><i class="fa fa-check"></i><b>3.2</b> R packages needed</a></li>
+<li class="chapter" data-level="3.3" data-path="setting-up-the-project-in-r.html"><a href="setting-up-the-project-in-r.html#package-structure"><i class="fa fa-check"></i><b>3.3</b> Package Structure</a></li>
+<li class="chapter" data-level="3.4" data-path="setting-up-the-project-in-r.html"><a href="setting-up-the-project-in-r.html#creating-the-package"><i class="fa fa-check"></i><b>3.4</b> Creating the package</a></li>
+<li class="chapter" data-level="3.5" data-path="setting-up-the-project-in-r.html"><a href="setting-up-the-project-in-r.html#check-the-package"><i class="fa fa-check"></i><b>3.5</b> Check the package</a></li>
+<li class="chapter" data-level="3.6" data-path="setting-up-the-project-in-r.html"><a href="setting-up-the-project-in-r.html#building-the-package"><i class="fa fa-check"></i><b>3.6</b> Building the package</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="typical-git-workflow.html"><a href="typical-git-workflow.html"><i class="fa fa-check"></i><b>4</b> Typical Git workflow</a><ul>
+<li class="chapter" data-level="4.1" data-path="typical-git-workflow.html"><a href="typical-git-workflow.html#first-push-to-gitlab"><i class="fa fa-check"></i><b>4.1</b> First push to GitLab</a></li>
+<li class="chapter" data-level="4.2" data-path="typical-git-workflow.html"><a href="typical-git-workflow.html#fetching-branches-from-gitlab"><i class="fa fa-check"></i><b>4.2</b> Fetching branches from GitLab</a></li>
+<li class="chapter" data-level="4.3" data-path="typical-git-workflow.html"><a href="typical-git-workflow.html#creating-new-branches-on-gitlab"><i class="fa fa-check"></i><b>4.3</b> Creating new branches on GitLab</a></li>
+<li class="chapter" data-level="4.4" data-path="typical-git-workflow.html"><a href="typical-git-workflow.html#useful-git-commands"><i class="fa fa-check"></i><b>4.4</b> Useful Git commands</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="creating-functions-in-r.html"><a href="creating-functions-in-r.html"><i class="fa fa-check"></i><b>5</b> Creating functions in R</a></li>
+<li class="chapter" data-level="6" data-path="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa.html"><a href="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa.html"><i class="fa fa-check"></i><b>6</b> A template function using futile logger for reading data in (data validation in QA)</a><ul>
+<li class="chapter" data-level="6.1" data-path="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa.html"><a href="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa.html#data-validation-function"><i class="fa fa-check"></i><b>6.1</b> Data Validation function</a></li>
+<li class="chapter" data-level="6.2" data-path="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa.html"><a href="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa.html#futile.logger"><i class="fa fa-check"></i><b>6.2</b> Futile.Logger</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa.html"><a href="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa.html#log_level"><i class="fa fa-check"></i><b>6.2.1</b> <code>log_level</code></a></li>
+<li class="chapter" data-level="6.2.2" data-path="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa.html"><a href="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa.html#log_appender"><i class="fa fa-check"></i><b>6.2.2</b> <code>log_appender</code></a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa.html"><a href="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa.html#the-documentation"><i class="fa fa-check"></i><b>6.3</b> The documentation</a></li>
+<li class="chapter" data-level="6.4" data-path="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa.html"><a href="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa.html#the-function-start"><i class="fa fa-check"></i><b>6.4</b> The function Start</a></li>
+<li class="chapter" data-level="6.5" data-path="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa.html"><a href="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa.html#futile.logger-setup"><i class="fa fa-check"></i><b>6.5</b> <code>futile.logger</code> setup</a></li>
+<li class="chapter" data-level="6.6" data-path="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa.html"><a href="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa.html#your-code"><i class="fa fa-check"></i><b>6.6</b> Your Code</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="advanced-functions.html"><a href="advanced-functions.html"><i class="fa fa-check"></i><b>7</b> Advanced Functions</a><ul>
+<li class="chapter" data-level="7.1" data-path="advanced-functions.html"><a href="advanced-functions.html#continuous-integration"><i class="fa fa-check"></i><b>7.1</b> Continuous Integration</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="useful-resources.html"><a href="useful-resources.html"><i class="fa fa-check"></i><b>8</b> Useful resources</a><ul>
+<li class="chapter" data-level="8.1" data-path="useful-resources.html"><a href="useful-resources.html#gss-rap-resources"><i class="fa fa-check"></i><b>8.1</b> GSS RAP resources</a></li>
+<li class="chapter" data-level="8.2" data-path="useful-resources.html"><a href="useful-resources.html#resources-from-nhs-scotland"><i class="fa fa-check"></i><b>8.2</b> Resources from NHS Scotland</a></li>
+<li class="chapter" data-level="8.3" data-path="useful-resources.html"><a href="useful-resources.html#various-rap-blogs"><i class="fa fa-check"></i><b>8.3</b> Various RAP blogs</a></li>
+<li class="chapter" data-level="8.4" data-path="useful-resources.html"><a href="useful-resources.html#unit-testing"><i class="fa fa-check"></i><b>8.4</b> Unit testing</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">RAP Guide for ONS</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="setting-up" class="section level1">
+<h1><span class="header-section-number">Chapter 2</span> Setting up</h1>
+<div id="software-to-install-thorugh-service-desk" class="section level2">
+<h2><span class="header-section-number">2.1</span> Software to install thorugh Service Desk</h2>
+<p>Before beginning, you will need to set up the following by raising a Service Desk call (Service Desk -&gt; I want something -&gt; Software / Applications -&gt; Desktop / Laptop Software -&gt; Add/Remove) for the following:</p>
+<p><strong>RStudio</strong> - when raising the Service Desk call for this, select the latest version of <em>RStudio</em> and <em>The R Foundation</em>. You will need to install both.</p>
+<p>Set-up RStudio and artifactory <span style="color:red">I want to collapse this - not sure how to do it though</span></p>
+<p>Artifactory is an environemnt which allows you to install packages to R.</p>
+<ol style="list-style-type: decimal">
+<li>On your D: drive create a folder called R.</li>
+<li>Inside there create a folder called Lib, and open that folder.</li>
+<li><strong><span style="color:red">Copy this file??? - Josh I’m not sure what is meant by this (I found these instrucitons on the Intro to R teaching materials. Do you remember how we created an .Rprofile??</span></strong>. Save it as .Rprofile - make sure it has the dot at the front!</li>
+<li>In your Start menu, locate RStudio. Right click and pin to start menu.</li>
+<li>Open your Start menu and right click on RStudio, then go to properties.</li>
+<li>Where it says “start in” delete the contents and replace with D:and click
+apply.</li>
+<li>Go to <a href="http://art-p-01/artifactory/webapp/#/login" class="uri">http://art-p-01/artifactory/webapp/#/login</a>, log in with your Windows username and password.</li>
+<li>Click on your username (top right), re-type your password.</li>
+<li>Next to Encrypted Password click the copy button (the clipboard).</li>
+<li>Now open the .Rprofile in notepad, replace username with your user name and hashed Password with what you copied from the artifactory and save. You always need to start R from the pin in your start menu.</li>
+</ol>
+<p>Every time you change your windows password you will need to go and fetch your new hashed password from the artifactory and update this on your .Rprofile (notebook).</p>
+<p><span style="color:red">end of collapse</span></p>
+<p>You need to make sure that RStudio, .Rpofiile and artifactory have been set up correctly before proceeding.</p>
+<p><strong>RTools</strong> - RTools compiles code and builds packages. You will need this if you plan on creating packages for your RAP code (recommended).</p>
+<p><strong>Command line access</strong> - you need command line access in order to use GitBash. You won’t need to use the command line directly however.</p>
+<p><strong>GitBash</strong> - GitBash is the platform used to communicate changes between your local device and the remote collaborative GitLab project. This is essential for collaborative working. It is also an effective way to version control your work, therefore even if working independently on code, it is recommended to log changes by using GitBash.</p>
+<p>If you haven’t used GitBash before, then you’ll need to set up your details on the local device. Firstly set a GitBash username by inserting your name in the quotation marks in the following command on GitBash:</p>
+<pre><code>$ git config --global user.name &quot;Mona Lisa&quot;</code></pre>
+<p>To confirm that you have set the GitBash username correctly, type the command:</p>
+<pre><code>$ git config --global user.name
+&gt; Mona Lisa</code></pre>
+<p>This should print your name.</p>
+<p>Repeat the same with <code>git config --global user.email "user.email@ons.gov.uk"</code></p>
+<p><span style="color:red">Josh- have I missed out on anything here? do we need to add password??</span></p>
+<p><strong>ONS GitLab project</strong> - GitLab is the internal ONS version of GitHub and is a space for storing code. All who are involved with the development and coding of this work should have access to a ‘project’, set up specifically for this work, on the ONS GitLab. This is essential for collaborative working. GitLab allows multiple people to work on code simultaneously, and enables version control and traceability of the work.</p>
+<p>With GitLab, you can’t manually create projects so you’ll need to raise a call for this, specifying who can have access to the project. <span style="color:red">You will most likely be granted developer access to the project, but you can change this?</span></p>
+<p>The name you choose for this project will be the name of your package. You need to consider R package naming conventions when doing this.</p>
+<p>Summary of naming conventions:</p>
+<ul>
+<li>Only include a-z alphabetical characters (both lower case and capitals are ok)</li>
+<li>Don’t use special characters (?!/ etc.), numbers, underscores</li>
+</ul>
+<p><span style="color:red">add link to naming good practice guidance here - josh do you know of any link??</span></p>
+</div>
+<div id="getting-started-with-ons-gitlab" class="section level2">
+<h2><span class="header-section-number">2.2</span> Getting started with ONS GitLab</h2>
+<p>By now you should have had your project set up by raising a Service Desk call. This is where all the code and documentation for your project will be stored.</p>
+<p>When the project is set up, it will automatically contain a master branch. This is what you will be working on initially when setting up the skeleton package. Later when you’re writing code for functions (to clean, link, analyse data etc.), you’ll need to create new branches <span style="color:red">(more on this in section X)</span></p>
+<div id="set-up-ssh-key" class="section level3">
+<h3><span class="header-section-number">2.2.1</span> Set up SSH key</h3>
+<p>You will need an SSH (Secure Shell) key to connect your local computer to the GitLab securely.
+There is guidance on setting up the key on <a href="https://docs.gitlab.com/ee/ssh/">GitLab</a></p>
+<p>To set up the key it’s best to use GitBash. To generate the key in GitBash, the command used is:</p>
+<pre><code>ssh-keygen -t ed25519 -C &quot;user.email@ons.gov.uk&quot;  </code></pre>
+<ul>
+<li><strong>-t</strong> tells you which key you want to set up</li>
+<li><strong>ed25519</strong> following best practice this is the standard key, as it is more secure and has better performance over other types, such as RSA, DSA, ECDSA keys.</li>
+<li><strong>-C</strong> adds a comment</li>
+</ul>
+<p>GitBash will ask you to set up a password, or you can leave it blank without a password, but this is bad practice. Remember the password, as you will need it later.</p>
+<p>This command generates a public and private key. It will also automatically generate a folder including these keys in your default directory. This is the H: drive on an ONS laptop.</p>
+<p>To to copy the public key to the clipboard use the command:</p>
+<pre><code>cat ~/.ssh/id_ed25519.pub | clip</code></pre>
+<p>You can then paste this to GitLab project <span style="color:red">Add screenshot of where to paste the key?</span>. Now the local computer can communicate with GitLab securely.</p>
+</div>
+</div>
+<div id="cloning-project-to-local-laptop" class="section level2">
+<h2><span class="header-section-number">2.3</span> Cloning project to local laptop</h2>
+<p>Now you are ready to clone the project from GitLab to your laptop. It is usually best to clone it to the D: drive.</p>
+<p>In GitBash make sure that you are located in your D: drive, inside the folder where you want the project to be stored.</p>
+<p><span style="color:red">Add instructions on how to check which directory you are in using bash - not sure what this is - Josh?</span></p>
+<p>If you need to change directory in GitBash, use the command:</p>
+<pre><code>cd d:/git</code></pre>
+<p>This will take you to the ‘git’ folder in your D: drive. When you clone the project from GitLab it will then go into this folder.</p>
+<p>Go to the GitLab project and copy the HTTP for the project. This is accessed by clicking on the dropdown where it says ‘SSH’ and changing this to ‘HTTP’<span style="color:red">Add screenshot of where to find this</span>. Copy the unique HTTP for this project.</p>
+<p>Now go to GitBash, paste the HTTP and clone the project using the command:</p>
+<pre><code>git clone http://np2rvlapxx507/Data_Capability/RAP_Guidance.git</code></pre>
+<p><span style="color:red">do we need to pull form GitLab here or is it automatically on the local drive when you set up the SSH key??</span></p>
+<p>After cloning the repository, instead of using <code>git status</code> to check the whether it has cloned. Use <code>cd</code> to locate to the repository on your local computer e.g. if you have just cloned compR into the git folder then check by using the command <code>cd d:/git/compR</code> to see whether it is there.</p>
+<p><strong>Note</strong> - you can also clone by copying the SSH key rather than the HTTP. With ONS GitLab however the SSH approach has proven to be unreliable, and we recommended using HTTP.</p>
+<p><em>If</em> you are following the SSH key approach, you will need to enter a password to establish the SSH key connection.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="setting-up-the-project-in-r.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/02-setup.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

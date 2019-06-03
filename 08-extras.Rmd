@@ -1,4 +1,4 @@
-#R extensions
+# R extensions
 
 ##Discuss
 Unit testing for functions, travis, continuous integration, package dependencies

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 7 Advanced Functions | RAP Guide for ONS</title>
+  <meta name="description" content="This is a guide for RAP at the ONS" />
+  <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 7 Advanced Functions | RAP Guide for ONS" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a guide for RAP at the ONS" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 7 Advanced Functions | RAP Guide for ONS" />
+  
+  <meta name="twitter:description" content="This is a guide for RAP at the ONS" />
+  
+
+<meta name="author" content="Joshua &amp; Catrin" />
+
+
+<meta name="date" content="2019-06-03" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa.html">
+<link rel="next" href="r-extensions.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A ONS guide to RAP</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="setting-up.html"><a href="setting-up.html"><i class="fa fa-check"></i><b>2</b> Setting up</a><ul>
+<li class="chapter" data-level="2.1" data-path="setting-up.html"><a href="setting-up.html#software-to-install-thorugh-service-desk"><i class="fa fa-check"></i><b>2.1</b> Software to install thorugh Service Desk</a></li>
+<li class="chapter" data-level="2.2" data-path="setting-up.html"><a href="setting-up.html#getting-started-with-ons-gitlab"><i class="fa fa-check"></i><b>2.2</b> Getting started with ONS GitLab</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="setting-up.html"><a href="setting-up.html#set-up-ssh-key"><i class="fa fa-check"></i><b>2.2.1</b> Set up SSH key</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="setting-up.html"><a href="setting-up.html#cloning-project-to-local-laptop"><i class="fa fa-check"></i><b>2.3</b> Cloning project to local laptop</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="setting-up-the-project-in-r.html"><a href="setting-up-the-project-in-r.html"><i class="fa fa-check"></i><b>3</b> Setting up the project in R</a><ul>
+<li class="chapter" data-level="3.1" data-path="setting-up-the-project-in-r.html"><a href="setting-up-the-project-in-r.html#getting-started"><i class="fa fa-check"></i><b>3.1</b> Getting started</a></li>
+<li class="chapter" data-level="3.2" data-path="setting-up-the-project-in-r.html"><a href="setting-up-the-project-in-r.html#r-packages-needed"><i class="fa fa-check"></i><b>3.2</b> R packages needed</a></li>
+<li class="chapter" data-level="3.3" data-path="setting-up-the-project-in-r.html"><a href="setting-up-the-project-in-r.html#package-structure"><i class="fa fa-check"></i><b>3.3</b> Package Structure</a></li>
+<li class="chapter" data-level="3.4" data-path="setting-up-the-project-in-r.html"><a href="setting-up-the-project-in-r.html#creating-the-package"><i class="fa fa-check"></i><b>3.4</b> Creating the package</a></li>
+<li class="chapter" data-level="3.5" data-path="setting-up-the-project-in-r.html"><a href="setting-up-the-project-in-r.html#check-the-package"><i class="fa fa-check"></i><b>3.5</b> Check the package</a></li>
+<li class="chapter" data-level="3.6" data-path="setting-up-the-project-in-r.html"><a href="setting-up-the-project-in-r.html#building-the-package"><i class="fa fa-check"></i><b>3.6</b> Building the package</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="typical-git-workflow.html"><a href="typical-git-workflow.html"><i class="fa fa-check"></i><b>4</b> Typical Git workflow</a><ul>
+<li class="chapter" data-level="4.1" data-path="typical-git-workflow.html"><a href="typical-git-workflow.html#first-push-to-gitlab"><i class="fa fa-check"></i><b>4.1</b> First push to GitLab</a></li>
+<li class="chapter" data-level="4.2" data-path="typical-git-workflow.html"><a href="typical-git-workflow.html#fetching-branches-from-gitlab"><i class="fa fa-check"></i><b>4.2</b> Fetching branches from GitLab</a></li>
+<li class="chapter" data-level="4.3" data-path="typical-git-workflow.html"><a href="typical-git-workflow.html#creating-new-branches-on-gitlab"><i class="fa fa-check"></i><b>4.3</b> Creating new branches on GitLab</a></li>
+<li class="chapter" data-level="4.4" data-path="typical-git-workflow.html"><a href="typical-git-workflow.html#useful-git-commands"><i class="fa fa-check"></i><b>4.4</b> Useful Git commands</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="creating-functions-in-r.html"><a href="creating-functions-in-r.html"><i class="fa fa-check"></i><b>5</b> Creating functions in R</a></li>
+<li class="chapter" data-level="6" data-path="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa.html"><a href="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa.html"><i class="fa fa-check"></i><b>6</b> A template function using futile logger for reading data in (data validation in QA)</a><ul>
+<li class="chapter" data-level="6.1" data-path="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa.html"><a href="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa.html#data-validation-function"><i class="fa fa-check"></i><b>6.1</b> Data Validation function</a></li>
+<li class="chapter" data-level="6.2" data-path="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa.html"><a href="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa.html#futile.logger"><i class="fa fa-check"></i><b>6.2</b> Futile.Logger</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa.html"><a href="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa.html#log_level"><i class="fa fa-check"></i><b>6.2.1</b> <code>log_level</code></a></li>
+<li class="chapter" data-level="6.2.2" data-path="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa.html"><a href="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa.html#log_appender"><i class="fa fa-check"></i><b>6.2.2</b> <code>log_appender</code></a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa.html"><a href="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa.html#the-documentation"><i class="fa fa-check"></i><b>6.3</b> The documentation</a></li>
+<li class="chapter" data-level="6.4" data-path="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa.html"><a href="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa.html#the-function-start"><i class="fa fa-check"></i><b>6.4</b> The function Start</a></li>
+<li class="chapter" data-level="6.5" data-path="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa.html"><a href="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa.html#futile.logger-setup"><i class="fa fa-check"></i><b>6.5</b> <code>futile.logger</code> setup</a></li>
+<li class="chapter" data-level="6.6" data-path="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa.html"><a href="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa.html#your-code"><i class="fa fa-check"></i><b>6.6</b> Your Code</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="advanced-functions.html"><a href="advanced-functions.html"><i class="fa fa-check"></i><b>7</b> Advanced Functions</a><ul>
+<li class="chapter" data-level="7.1" data-path="advanced-functions.html"><a href="advanced-functions.html#arguments-for-functions"><i class="fa fa-check"></i><b>7.1</b> Arguments for functions</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="r-extensions.html"><a href="r-extensions.html"><i class="fa fa-check"></i><b>8</b> R extensions</a><ul>
+<li class="chapter" data-level="8.1" data-path="r-extensions.html"><a href="r-extensions.html#continuous-integration"><i class="fa fa-check"></i><b>8.1</b> Continuous Integration</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="useful-resources.html"><a href="useful-resources.html"><i class="fa fa-check"></i><b>9</b> Useful resources</a><ul>
+<li class="chapter" data-level="9.1" data-path="useful-resources.html"><a href="useful-resources.html#gss-rap-resources"><i class="fa fa-check"></i><b>9.1</b> GSS RAP resources</a></li>
+<li class="chapter" data-level="9.2" data-path="useful-resources.html"><a href="useful-resources.html#resources-from-nhs-scotland"><i class="fa fa-check"></i><b>9.2</b> Resources from NHS Scotland</a></li>
+<li class="chapter" data-level="9.3" data-path="useful-resources.html"><a href="useful-resources.html#various-rap-blogs"><i class="fa fa-check"></i><b>9.3</b> Various RAP blogs</a></li>
+<li class="chapter" data-level="9.4" data-path="useful-resources.html"><a href="useful-resources.html#unit-testing"><i class="fa fa-check"></i><b>9.4</b> Unit testing</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">RAP Guide for ONS</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="advanced-functions" class="section level1">
+<h1><span class="header-section-number">Chapter 7</span> Advanced Functions</h1>
+<p>We will briefly examine using conditional logic in function arguments to allow your functions to have options. This can be useful for</p>
+<ul>
+<li>Create an optional viewing argument, which creates a graph of the data. This allows the data to be manually viewed, allowing outliers or distribution to be examined</li>
+<li>Allow different inputs, such as a function that includes a t-test, an a function argument could be used to alter the significance level used.</li>
+<li>For development. A function could have an argument that switches between join g all the data or dropping missing values, so whilst the data is still coming in the function could be used on the available data to see what the output might look like.</li>
+</ul>
+<div id="arguments-for-functions" class="section level2">
+<h2><span class="header-section-number">7.1</span> Arguments for functions</h2>
+<p>To demonstrate we will use the function that we built in the last chapter. We can take the first function call, and add an argument. To start we’ll create an argument that calls a plot. We call the argument plot (but it can be called anything) and set the default to FALSE. This will mean that if we call the argument without specifying plot the default will be not to generate a plot, we would need to call <code>read_data(plot = TRUE)</code> to get a plot.</p>
+<pre><code>read_data &lt;- function(plot = FALSE, log_level = futile.logger::WARN, log_appender = &quot;console&quot;) { </code></pre>
+<p>We will place the code at the end of the function before the closing brackets.</p>
+<p>This function uses an <code>if</code> statement to allow this element to be turned on and off. If the argument of the <code>if</code> statement is true (is plot is true), then the code chunk is run, if it is false then it is not run. So by using <code>plot = TRUE</code> this makes the <code>if</code> statement run the code chunk allowing the plotting function to be turned on when desired. The default is given as FALSE. This is useful for examining aspects of your data. In this example the data is grouped into 3 levels, at 4,6 and 8, the chart shows this. A graph would be a quick and effective method of checking whether data was not in one of these three groups, indicating an error in the data. You could use such this graphing function to examine whether your data is in the range you expect it.</p>
+<pre><code>if(plot) {
+plot(b$cyl, b$mpg)
+} 
+</code></pre>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="r-extensions.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/07-advanced_functions.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

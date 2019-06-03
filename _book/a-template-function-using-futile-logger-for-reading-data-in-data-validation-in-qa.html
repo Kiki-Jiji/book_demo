@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 6 A template function using futile logger for reading data in (data validation in QA) | RAP Guide for ONS</title>
+  <meta name="description" content="This is a guide for RAP at the ONS" />
+  <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 6 A template function using futile logger for reading data in (data validation in QA) | RAP Guide for ONS" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a guide for RAP at the ONS" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 6 A template function using futile logger for reading data in (data validation in QA) | RAP Guide for ONS" />
+  
+  <meta name="twitter:description" content="This is a guide for RAP at the ONS" />
+  
+
+<meta name="author" content="Joshua &amp; Catrin" />
+
+
+<meta name="date" content="2019-06-03" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="creating-functions-in-r.html">
+<link rel="next" href="advanced-functions.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A ONS guide to RAP</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="setting-up.html"><a href="setting-up.html"><i class="fa fa-check"></i><b>2</b> Setting up</a><ul>
+<li class="chapter" data-level="2.1" data-path="setting-up.html"><a href="setting-up.html#software-to-install-thorugh-service-desk"><i class="fa fa-check"></i><b>2.1</b> Software to install thorugh Service Desk</a></li>
+<li class="chapter" data-level="2.2" data-path="setting-up.html"><a href="setting-up.html#getting-started-with-ons-gitlab"><i class="fa fa-check"></i><b>2.2</b> Getting started with ONS GitLab</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="setting-up.html"><a href="setting-up.html#set-up-ssh-key"><i class="fa fa-check"></i><b>2.2.1</b> Set up SSH key</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="setting-up.html"><a href="setting-up.html#cloning-project-to-local-laptop"><i class="fa fa-check"></i><b>2.3</b> Cloning project to local laptop</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="setting-up-the-project-in-r.html"><a href="setting-up-the-project-in-r.html"><i class="fa fa-check"></i><b>3</b> Setting up the project in R</a><ul>
+<li class="chapter" data-level="3.1" data-path="setting-up-the-project-in-r.html"><a href="setting-up-the-project-in-r.html#getting-started"><i class="fa fa-check"></i><b>3.1</b> Getting started</a></li>
+<li class="chapter" data-level="3.2" data-path="setting-up-the-project-in-r.html"><a href="setting-up-the-project-in-r.html#r-packages-needed"><i class="fa fa-check"></i><b>3.2</b> R packages needed</a></li>
+<li class="chapter" data-level="3.3" data-path="setting-up-the-project-in-r.html"><a href="setting-up-the-project-in-r.html#package-structure"><i class="fa fa-check"></i><b>3.3</b> Package Structure</a></li>
+<li class="chapter" data-level="3.4" data-path="setting-up-the-project-in-r.html"><a href="setting-up-the-project-in-r.html#creating-the-package"><i class="fa fa-check"></i><b>3.4</b> Creating the package</a></li>
+<li class="chapter" data-level="3.5" data-path="setting-up-the-project-in-r.html"><a href="setting-up-the-project-in-r.html#check-the-package"><i class="fa fa-check"></i><b>3.5</b> Check the package</a></li>
+<li class="chapter" data-level="3.6" data-path="setting-up-the-project-in-r.html"><a href="setting-up-the-project-in-r.html#building-the-package"><i class="fa fa-check"></i><b>3.6</b> Building the package</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="typical-git-workflow.html"><a href="typical-git-workflow.html"><i class="fa fa-check"></i><b>4</b> Typical Git workflow</a><ul>
+<li class="chapter" data-level="4.1" data-path="typical-git-workflow.html"><a href="typical-git-workflow.html#first-push-to-gitlab"><i class="fa fa-check"></i><b>4.1</b> First push to GitLab</a></li>
+<li class="chapter" data-level="4.2" data-path="typical-git-workflow.html"><a href="typical-git-workflow.html#fetching-branches-from-gitlab"><i class="fa fa-check"></i><b>4.2</b> Fetching branches from GitLab</a></li>
+<li class="chapter" data-level="4.3" data-path="typical-git-workflow.html"><a href="typical-git-workflow.html#creating-new-branches-on-gitlab"><i class="fa fa-check"></i><b>4.3</b> Creating new branches on GitLab</a></li>
+<li class="chapter" data-level="4.4" data-path="typical-git-workflow.html"><a href="typical-git-workflow.html#useful-git-commands"><i class="fa fa-check"></i><b>4.4</b> Useful Git commands</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="creating-functions-in-r.html"><a href="creating-functions-in-r.html"><i class="fa fa-check"></i><b>5</b> Creating functions in R</a></li>
+<li class="chapter" data-level="6" data-path="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa.html"><a href="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa.html"><i class="fa fa-check"></i><b>6</b> A template function using futile logger for reading data in (data validation in QA)</a><ul>
+<li class="chapter" data-level="6.1" data-path="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa.html"><a href="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa.html#data-validation-function"><i class="fa fa-check"></i><b>6.1</b> Data Validation function</a></li>
+<li class="chapter" data-level="6.2" data-path="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa.html"><a href="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa.html#futile.logger"><i class="fa fa-check"></i><b>6.2</b> Futile.Logger</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa.html"><a href="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa.html#log_level"><i class="fa fa-check"></i><b>6.2.1</b> <code>log_level</code></a></li>
+<li class="chapter" data-level="6.2.2" data-path="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa.html"><a href="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa.html#log_appender"><i class="fa fa-check"></i><b>6.2.2</b> <code>log_appender</code></a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa.html"><a href="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa.html#the-documentation"><i class="fa fa-check"></i><b>6.3</b> The documentation</a></li>
+<li class="chapter" data-level="6.4" data-path="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa.html"><a href="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa.html#the-function-start"><i class="fa fa-check"></i><b>6.4</b> The function Start</a></li>
+<li class="chapter" data-level="6.5" data-path="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa.html"><a href="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa.html#futile.logger-setup"><i class="fa fa-check"></i><b>6.5</b> <code>futile.logger</code> setup</a></li>
+<li class="chapter" data-level="6.6" data-path="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa.html"><a href="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa.html#your-code"><i class="fa fa-check"></i><b>6.6</b> Your Code</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="advanced-functions.html"><a href="advanced-functions.html"><i class="fa fa-check"></i><b>7</b> Advanced Functions</a><ul>
+<li class="chapter" data-level="7.1" data-path="advanced-functions.html"><a href="advanced-functions.html#continuous-integration"><i class="fa fa-check"></i><b>7.1</b> Continuous Integration</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="useful-resources.html"><a href="useful-resources.html"><i class="fa fa-check"></i><b>8</b> Useful resources</a><ul>
+<li class="chapter" data-level="8.1" data-path="useful-resources.html"><a href="useful-resources.html#gss-rap-resources"><i class="fa fa-check"></i><b>8.1</b> GSS RAP resources</a></li>
+<li class="chapter" data-level="8.2" data-path="useful-resources.html"><a href="useful-resources.html#resources-from-nhs-scotland"><i class="fa fa-check"></i><b>8.2</b> Resources from NHS Scotland</a></li>
+<li class="chapter" data-level="8.3" data-path="useful-resources.html"><a href="useful-resources.html#various-rap-blogs"><i class="fa fa-check"></i><b>8.3</b> Various RAP blogs</a></li>
+<li class="chapter" data-level="8.4" data-path="useful-resources.html"><a href="useful-resources.html#unit-testing"><i class="fa fa-check"></i><b>8.4</b> Unit testing</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">RAP Guide for ONS</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa" class="section level1">
+<h1><span class="header-section-number">Chapter 6</span> A template function using futile logger for reading data in (data validation in QA)</h1>
+<p>The previous chapter covered how to write functions in R. This chapter covers a template function for reading in data and validating the data. You will be able to copy and paste the template and write your own functions and data checks. We will be covering data validation using the <code>futile.logger</code> package.</p>
+<div id="data-validation-function" class="section level2">
+<h2><span class="header-section-number">6.1</span> Data Validation function</h2>
+<p>This function will have 5 main steps</p>
+<ul>
+<li>the documentation (covered in chapter 5)</li>
+<li>the function opening and arguments</li>
+<li>the futile logger setup</li>
+<li>data validation checks</li>
+<li>your code</li>
+</ul>
+<p>Before we work on anything we should create a new branch and move onto it- this is covered in chapter 4.</p>
+</div>
+<div id="futile.logger" class="section level2">
+<h2><span class="header-section-number">6.2</span> Futile.Logger</h2>
+<p>Quality Assurance is fundamental to the production of statistics. <code>futile.logger</code> is a package in R that allows us to easily validate the data that is ingested into out pipeline. Almost any Quality Assurance practice that you manually do can be implemented and automated in R using this package, such as:</p>
+<ul>
+<li>check for missing values</li>
+<li>check for unusual values (negative values in an age column)</li>
+<li>check</li>
+</ul>
+<p>We will include two arguments from <code>futile.logger</code> in the function setup. The documentation for <a href="https://cran.r-project.org/web/packages/futile.logger/futile.logger.pdf">futile.logger</a> is available.</p>
+<div id="log_level" class="section level3">
+<h3><span class="header-section-number">6.2.1</span> <code>log_level</code></h3>
+<p>There are multiple log levels available which ranges from TRACE to FATAL. The levels form a hierarchy that not only indicate the severity of the message but also when it should be displayed. This is controlled by the threshold, which only allows messages with a severity greater than or equal to the threshold to be displayed.</p>
+<p>When futile.logger is loaded, the default log level is INFO. To change the logging threshold use the futile.threshold function. The available thresholds are the same as the log levels: TRACE, DEBUG, INFO, WARN, ERROR, FATAL. Choose the threshold that you want to see and all messages of that severity and higher will display.</p>
+<p>With this simple mechanism you can add log statements in your code and control the display of the messages by simply changing the logging threshold. Hence for development keep the threshold on INFO, for debugging change to TRACE, and for production set to WARN.</p>
+<p>We will demonstrate log messages with numerous functions latter in the chapter.</p>
+</div>
+<div id="log_appender" class="section level3">
+<h3><span class="header-section-number">6.2.2</span> <code>log_appender</code></h3>
+<p>An appender defines where a log message goes. This allows a log record to be kept providing a QA validation record. There are two appenders provided with <code>futile.logger</code>.</p>
+<ul>
+<li>appender.console()</li>
+<li>appender.file(file name)</li>
+</ul>
+<p>Appending to the console will print the log messages to the R studio console, allowing you to easily view the log messages as you run the functions. Logging to a file is useful for keeping a record.We will demonstrate both of these later.</p>
+<p>This is meant as an introduction to error logging with <code>futile.logger</code> not a comprehensive guide. A great source is chapter 12 of the <a href="https://ukgovdatascience.github.io/rap_companion/qa-data.html">Rap Companion</a> and this blog post from the package author also gives a good overview <a href="https://www.r-bloggers.com/better-logging-in-r-aka-futile-logger-1-3-0-released/">Better logging in R</a></p>
+<p>We will now write a function called read_data that will read in data from an excel spreadsheet, validate the data and preform a basic transformation of the data. This will serve as a template. You can copy and paste the code and change any section to make it more relevant for you.</p>
+</div>
+</div>
+<div id="the-documentation" class="section level2">
+<h2><span class="header-section-number">6.3</span> The documentation</h2>
+<p>To start you can copy and paste the following section.</p>
+<pre><code>#&#39;@title read_data
+#&#39; 
+#&#39;@description this function reads in data 
+#&#39; 
+#&#39;@details 
+#&#39; 
+#&#39;@param x This is a file path of the excel spreadsheet
+#&#39;
+#&#39;@param log_level This parameter will print messages which log the status of your function. These are
+#&#39;written from least to most serious: TRACE, DEBUG, INFO, WARN, ERROR, FATAL. The default level is INFO.
+#&#39;See \code{?flog.threshold()} for additional details.
+#&#39; 
+#&#39;@param log_appender This paramater sets the default so that the log is printed to the &quot;console&quot;. #&#39;Alternatively you can provide a character string to specify a filename to also write to. See
+#&#39;for additional details \code{?futile.logger::appender.file()}.
+#&#39;
+#&#39;@examples data &lt;- read_data(&quot;file.path&quot;, log_level = futile.logger::WARN, log_appender = &quot;console&quot;)
+#&#39;    
+#&#39;@export
+</code></pre>
+<p>This will be you documentation. You will at some point want to expand on the documentation, such as adding more of a description and details. You can see from <code>@param</code> that our function will have three arguments. The first is a file path that will indicate where the excel file is. The second is is the log_level, and the third is the log_appender.</p>
+</div>
+<div id="the-function-start" class="section level2">
+<h2><span class="header-section-number">6.4</span> The function Start</h2>
+<p>The function now need to be started, you can copy and paste this as well.</p>
+<pre><code>read_data &lt;- function(x, log_level = futile.logger::WARN, log_appender = &quot;console&quot;) { 
+
+}
+</code></pre>
+<p>This set’s up the function. Everything need to be written within these braces. x is the filepath which will be passed to the function. The <code>log_level</code> has been provided with a default of WARN so that the function can be run without specifying a <code>log_level</code>. This can be changed to TRACE by running the function with <code>log_level = futile.logger::FATAL</code> as a argument, as provided in the documentation.</p>
+<p>The log messages are by default outputted to the console. If a file name is given in the function call such as <code>log_appender= "QA_log_JAN19.txt"</code> then a new file called “QA_log_JAN19.text” will be created in the current directory containing the log messages according to the <code>log_level</code>.</p>
+</div>
+<div id="futile.logger-setup" class="section level2">
+<h2><span class="header-section-number">6.5</span> <code>futile.logger</code> setup</h2>
+<p>The following code is needed for for the <code>futile.logger</code> arguments to work. But before we put the code we will want to read our data into R studio. The reason for this is that we are unable to preform data validation on a file path, we need to read the data into R and create a data.frame on which we can create log messages. For an excel spreadsheet this function might be:</p>
+<pre><code>test_data &lt;- readxl::read_excel(x)</code></pre>
+<p>Inside the function there will now be a data frame called data containing the excel spreadsheet. Read the <code>read_excel</code> <a href="https://www.rdocumentation.org/packages/readxl/versions/0.1.1/topics/read_excel">documentation</a> for additional arguments.</p>
+<p>The following code sets up futile logger. You can copy and paste the code block. The comments are not necessary but are helpful, but you can delete them if you wish to make your code cleaner, the information should also be in the function description. As I said before, all code needs to be inside the curly braces <code>{ }</code>.</p>
+<pre><code># The following code now sets the flog threshold to the log_level defined in the 2nd argument of the function above
+  
+  futile.logger::flog.threshold(log_level)
+  
+  # This could be changed so that every detail is printed (not only errors and warnings). Do this by setting log_level argument to futile.logger::TRACE for full info.
+  
+  # Now, we create an option of printing and storing results from the checks in somewhere other than the console. Below we are saying
+  # that if the log_appender argument is not set to console (and set to a file name) then R will create a file to store the information and outputs from checks. 
+  
+  if(log_appender != &quot;console&quot;)
+  {
+    futile.logger::flog.appender(futile.logger::appender.file(log_appender))
+  }</code></pre>
+<p>Now that <code>futile.logger</code> is set up we can run data validation on the incoming data. There are many way to achieve this in <code>futile.logger</code>. You will not be able to copy and paste this step as this will depend on rte data validation needed for your data. An example block of code shows some examples.</p>
+<p>First we can use <code>futile.logger::flog.info("")</code> to write a statement. This is useful for the QA logs. There are a number of different scales such as:</p>
+<pre><code>flog.info(&quot;My first log statement with futile.logger&quot;)
+flog.warn(&quot;This statement has higher severity&quot;)
+flog.fatal(&quot;This one is really scary&quot;)</code></pre>
+<p>Once the function is built you can experiment with setting the log to different levels and can see how this affects what is reported back. Below is an example with a start and end log, and one check. The <code>flog.info</code> tells us that the QA checks are starting, and if they are all passes then we will get a log saying …passed.</p>
+<p>There is only one check but many more can be added between the checks started and checks ended comments. This is a basic check that examines whether the data frame has the expected number of columns, in this case 10. If it does not then it will print the message x must have 10 columns, and then carry on the function. This lets you know that thee data is not of the structure you expected but does not stop the function, as you may be aware of this and do not mind, however if you are not aware then this will let you know. If you do not understand this if statement then it would be useful spending some time on this.</p>
+<pre><code># Checks
+
+futile.logger::flog.info(&quot;Quality Assurance of the pipeline&quot;)
+  
+# Intergrity checks on incoming data
+# Check the structure of the data.frame is as expected
+# checks started
+  
+futile.logger::flog.debug(&quot;Checking x has the expected number of columns&quot;)
+if (!length(colnames(x)) == 10)
+{
+  futile.logger::flog.error(&quot;x must have 10 columns&quot;, x, capture = TRUE)
+}
+  
+# checks ended
+
+futile.logger::flog.info(&quot;...passed&quot;)</code></pre>
+<p>The checks necessary will depend on your data. If for example you are using age data, then you may want to checks for negative values which is not possible. The following example includes a stop, so that if the check fails the function stops. This is important for when a check failing is important enough that the process should not continue until the error is fixed.</p>
+<p>You can think of these checks as modular, adding as many as necessary. These might in fact constitute the majority of your code</p>
+<p>This is an example of a check for missing values with a stop. The function <code>anyNA</code> is called on X, which would be your data frame. If the condition is true, that there are NA’s, then the stop is initiated with a message telling you why the function has stopped.</p>
+<pre><code>futile.logger::flog.debug(&quot;Checking for missing values&quot;)
+    if(anyNA(x)) { 
+      stop(&quot;There must not be missing values&quot;)
+    }
+</code></pre>
+</div>
+<div id="your-code" class="section level2">
+<h2><span class="header-section-number">6.6</span> Your Code</h2>
+<p>This section will include the R code to produce the output. In the case of a function that reads in the data, validates and the transforms the data into a useful form then this setion will be the transforming step (as we have already read in the data and validated). This step might be writing the code from scratch but it is often easier to have your working code already written in a script. You could open a new scipt and write the code you need, running through it to check that it works. Once you have the code working it is easy to modify it to run in a function. For example, the following code using an built in database mtcars. It then filter out any car with a <code>carb</code> less than 1, it then groups these by <code>cyl</code> and summarises the results. This script uses the package <code>dplyr</code>.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(dplyr)
+
+x =<span class="st"> </span>datasets<span class="op">::</span>mtcars
+
+  a &lt;-<span class="st"> </span><span class="kw">filter</span>(x , carb <span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span>)
+  b &lt;-<span class="st"> </span><span class="kw">group_by</span>(a, cyl)
+  c &lt;-<span class="st"> </span><span class="kw">summarise</span>(b, <span class="dt">Avg_mpg =</span> <span class="kw">mean</span>(mpg))
+  <span class="kw">print</span>(c)</code></pre>
+<pre><code>## # A tibble: 3 x 2
+##     cyl Avg_mpg
+##   &lt;dbl&gt;   &lt;dbl&gt;
+## 1     4    25.9
+## 2     6    19.7
+## 3     8    15.1</code></pre>
+<p>To convert we need to change the <code>library()</code> call, and instead put the package that we need as an import. This is done in the descrption as previsously descrbied.</p>
+<pre><code>#&#39; @import dplyr</code></pre>
+<p>We would not use the inbuilt data, but the dataframe that we have read in earlier. Looking back we called this <code>test_data</code> so we chnage the function to instead of taking x, to take the object <code>test_data</code>. And we don’t need to print the c object, but in a function we would want to <code>return(c)</code> instead. It is good pratcie to name the intermediate objects with informative names, letters are used for simplicity. You may also want to comment the code as you go. This helps you understand what you are doing, helps others who examine your code, and helps your future self who will have forgotten exactly what you wnated the code to do. You can format the comments as you wish (as long as each line starts with a #) but it will be easier if you use a stanard form, e.g. a blank line between each line of code, but no line between comments and code. Finally in a package we want to state the package of each function. This is good pratcie, and makes it far easiere to understand where your functions come from. In future when you get a package dependicy issue this will be very helpful. The nomenclature is <code>package::function</code> such as <code>dplyr::filter</code>. You</p>
+<pre><code># First we filter the data to get rud of any car with a carb less than 1
+ a &lt;- dplyr::filter(test_data , carb &gt; 1)
+ 
+# This groups by cyl and then summarises the result by the three levels of cyl (Number of cylinders) which #is 4 &amp; 6  &amp; 8
+  b &lt;- dplyr::group_by(a, cyl)
+  c &lt;- dplyr::summarise(b, Avg_mpg = mean(mpg))
+ 
+ return(c)
+}</code></pre>
+<p>You will also notice that the code chunks ends with }, as this is the end of the function! The whole function is shown below. I have changed the data source, from a excel to the inbuilt mtcars data frame, this allows you to use the code below as an example if you wish. if you have follwered the package set up and use the bewlow code you will have a working package with one function, in this case called read_data.</p>
+<pre><code>#&#39;@title read_data
+#&#39; 
+#&#39;@description this function reads in data 
+#&#39; 
+#&#39;@details 
+#&#39;
+#&#39;@param log_level This parameter will print messages which log the status of your function. These are
+#&#39;written from least to most serious: TRACE, DEBUG, INFO, WARN, ERROR, FATAL. The default level is INFO.
+#&#39;See \code{?flog.threshold()} for additional details.
+#&#39; 
+#&#39;@param log_appender This paramater sets the default so that the log is printed to the &quot;console&quot;. #&#39;Alternatively you can provide a character string to specify a filename to also write to. See
+#&#39;for additional details \code{?futile.logger::appender.file()}.
+#&#39;
+#&#39;@examples data &lt;- read_data(log_level = futile.logger::WARN, log_appender = &quot;console&quot;)
+#&#39;@import dplyr
+#&#39;
+#&#39;@export
+
+read_data &lt;- function(log_level = futile.logger::WARN, log_appender = &quot;console&quot;) { 
+
+test_data &lt;- datasets::mtcars
+
+# The following code now sets the flog threshold to the log_level defined in the 2nd argument of the function above
+  
+  futile.logger::flog.threshold(log_level)
+  
+  # This could be changed so that every detail is printed (not only errors and warnings). Do this by setting log_level argument to futile.logger::TRACE for full info.
+  
+  # Now, we create an option of printing and storing results from the checks in somewhere other than the console. Below we are saying
+  # that if the log_appender argument is not set to console (and set to a file name) then R will create a file to store the information and outputs from checks. 
+  
+  if(log_appender != &quot;console&quot;)
+  {
+    futile.logger::flog.appender(futile.logger::appender.file(log_appender))
+  }
+
+# Checks
+
+futile.logger::flog.info(&quot;Quality Assurance of the pipeline&quot;)
+  
+# Intergrity checks on incoming data
+# Check the structure of the data.frame is as expected
+# checks started
+  
+futile.logger::flog.debug(&quot;Checking x has the expected number of columns&quot;)
+if (!length(colnames(x)) == 10)
+{
+  futile.logger::flog.error(&quot;x must have 11 columns&quot;, x, capture = TRUE)
+}
+  
+futile.logger::flog.debug(&quot;Checking for missing values&quot;)
+    if(anyNA(x)) { 
+      stop(&quot;There must not be missing values&quot;)
+    }
+
+futile.logger::flog.info(&quot;...passed&quot;)
+
+# checks ended
+
+
+# First we filter the data to get rud of any car with a carb less than 1
+ a &lt;- dplyr::filter(test_data , carb &gt; 1)
+ 
+# This groups by cyl and then summarises the result by the three levels of cyl (Number of cylinders) which #is 4 &amp; 6  &amp; 8
+  b &lt;- dplyr::group_by(a, cyl)
+  c &lt;- dplyr::summarise(b, Avg_mpg = mean(mpg))
+ 
+ return(c)
+
+}</code></pre>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="creating-functions-in-r.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="advanced-functions.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/06-typical_function.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

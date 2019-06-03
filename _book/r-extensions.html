@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 8 R extensions | RAP Guide for ONS</title>
+  <meta name="description" content="This is a guide for RAP at the ONS" />
+  <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 8 R extensions | RAP Guide for ONS" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a guide for RAP at the ONS" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 8 R extensions | RAP Guide for ONS" />
+  
+  <meta name="twitter:description" content="This is a guide for RAP at the ONS" />
+  
+
+<meta name="author" content="Joshua &amp; Catrin" />
+
+
+<meta name="date" content="2019-06-03" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="advanced-functions.html">
+<link rel="next" href="useful-resources.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A ONS guide to RAP</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="setting-up.html"><a href="setting-up.html"><i class="fa fa-check"></i><b>2</b> Setting up</a><ul>
+<li class="chapter" data-level="2.1" data-path="setting-up.html"><a href="setting-up.html#software-to-install-thorugh-service-desk"><i class="fa fa-check"></i><b>2.1</b> Software to install thorugh Service Desk</a></li>
+<li class="chapter" data-level="2.2" data-path="setting-up.html"><a href="setting-up.html#getting-started-with-ons-gitlab"><i class="fa fa-check"></i><b>2.2</b> Getting started with ONS GitLab</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="setting-up.html"><a href="setting-up.html#set-up-ssh-key"><i class="fa fa-check"></i><b>2.2.1</b> Set up SSH key</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="setting-up.html"><a href="setting-up.html#cloning-project-to-local-laptop"><i class="fa fa-check"></i><b>2.3</b> Cloning project to local laptop</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="setting-up-the-project-in-r.html"><a href="setting-up-the-project-in-r.html"><i class="fa fa-check"></i><b>3</b> Setting up the project in R</a><ul>
+<li class="chapter" data-level="3.1" data-path="setting-up-the-project-in-r.html"><a href="setting-up-the-project-in-r.html#getting-started"><i class="fa fa-check"></i><b>3.1</b> Getting started</a></li>
+<li class="chapter" data-level="3.2" data-path="setting-up-the-project-in-r.html"><a href="setting-up-the-project-in-r.html#r-packages-needed"><i class="fa fa-check"></i><b>3.2</b> R packages needed</a></li>
+<li class="chapter" data-level="3.3" data-path="setting-up-the-project-in-r.html"><a href="setting-up-the-project-in-r.html#package-structure"><i class="fa fa-check"></i><b>3.3</b> Package Structure</a></li>
+<li class="chapter" data-level="3.4" data-path="setting-up-the-project-in-r.html"><a href="setting-up-the-project-in-r.html#creating-the-package"><i class="fa fa-check"></i><b>3.4</b> Creating the package</a></li>
+<li class="chapter" data-level="3.5" data-path="setting-up-the-project-in-r.html"><a href="setting-up-the-project-in-r.html#check-the-package"><i class="fa fa-check"></i><b>3.5</b> Check the package</a></li>
+<li class="chapter" data-level="3.6" data-path="setting-up-the-project-in-r.html"><a href="setting-up-the-project-in-r.html#building-the-package"><i class="fa fa-check"></i><b>3.6</b> Building the package</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="typical-git-workflow.html"><a href="typical-git-workflow.html"><i class="fa fa-check"></i><b>4</b> Typical Git workflow</a><ul>
+<li class="chapter" data-level="4.1" data-path="typical-git-workflow.html"><a href="typical-git-workflow.html#first-push-to-gitlab"><i class="fa fa-check"></i><b>4.1</b> First push to GitLab</a></li>
+<li class="chapter" data-level="4.2" data-path="typical-git-workflow.html"><a href="typical-git-workflow.html#fetching-branches-from-gitlab"><i class="fa fa-check"></i><b>4.2</b> Fetching branches from GitLab</a></li>
+<li class="chapter" data-level="4.3" data-path="typical-git-workflow.html"><a href="typical-git-workflow.html#creating-new-branches-on-gitlab"><i class="fa fa-check"></i><b>4.3</b> Creating new branches on GitLab</a></li>
+<li class="chapter" data-level="4.4" data-path="typical-git-workflow.html"><a href="typical-git-workflow.html#useful-git-commands"><i class="fa fa-check"></i><b>4.4</b> Useful Git commands</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="creating-functions-in-r.html"><a href="creating-functions-in-r.html"><i class="fa fa-check"></i><b>5</b> Creating functions in R</a></li>
+<li class="chapter" data-level="6" data-path="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa.html"><a href="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa.html"><i class="fa fa-check"></i><b>6</b> A template function using futile logger for reading data in (data validation in QA)</a><ul>
+<li class="chapter" data-level="6.1" data-path="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa.html"><a href="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa.html#data-validation-function"><i class="fa fa-check"></i><b>6.1</b> Data Validation function</a></li>
+<li class="chapter" data-level="6.2" data-path="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa.html"><a href="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa.html#futile.logger"><i class="fa fa-check"></i><b>6.2</b> Futile.Logger</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa.html"><a href="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa.html#log_level"><i class="fa fa-check"></i><b>6.2.1</b> <code>log_level</code></a></li>
+<li class="chapter" data-level="6.2.2" data-path="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa.html"><a href="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa.html#log_appender"><i class="fa fa-check"></i><b>6.2.2</b> <code>log_appender</code></a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa.html"><a href="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa.html#the-documentation"><i class="fa fa-check"></i><b>6.3</b> The documentation</a></li>
+<li class="chapter" data-level="6.4" data-path="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa.html"><a href="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa.html#the-function-start"><i class="fa fa-check"></i><b>6.4</b> The function Start</a></li>
+<li class="chapter" data-level="6.5" data-path="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa.html"><a href="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa.html#futile.logger-setup"><i class="fa fa-check"></i><b>6.5</b> <code>futile.logger</code> setup</a></li>
+<li class="chapter" data-level="6.6" data-path="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa.html"><a href="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa.html#your-code"><i class="fa fa-check"></i><b>6.6</b> Your Code</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="advanced-functions.html"><a href="advanced-functions.html"><i class="fa fa-check"></i><b>7</b> Advanced Functions</a></li>
+<li class="chapter" data-level="8" data-path="r-extensions.html"><a href="r-extensions.html"><i class="fa fa-check"></i><b>8</b> R extensions</a><ul>
+<li class="chapter" data-level="8.1" data-path="r-extensions.html"><a href="r-extensions.html#continuous-integration"><i class="fa fa-check"></i><b>8.1</b> Continuous Integration</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="useful-resources.html"><a href="useful-resources.html"><i class="fa fa-check"></i><b>9</b> Useful resources</a><ul>
+<li class="chapter" data-level="9.1" data-path="useful-resources.html"><a href="useful-resources.html#gss-rap-resources"><i class="fa fa-check"></i><b>9.1</b> GSS RAP resources</a></li>
+<li class="chapter" data-level="9.2" data-path="useful-resources.html"><a href="useful-resources.html#resources-from-nhs-scotland"><i class="fa fa-check"></i><b>9.2</b> Resources from NHS Scotland</a></li>
+<li class="chapter" data-level="9.3" data-path="useful-resources.html"><a href="useful-resources.html#various-rap-blogs"><i class="fa fa-check"></i><b>9.3</b> Various RAP blogs</a></li>
+<li class="chapter" data-level="9.4" data-path="useful-resources.html"><a href="useful-resources.html#unit-testing"><i class="fa fa-check"></i><b>9.4</b> Unit testing</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">RAP Guide for ONS</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="r-extensions" class="section level1">
+<h1><span class="header-section-number">Chapter 8</span> R extensions</h1>
+<p>##Discuss
+Unit testing for functions, travis, continuous integration, package dependencies</p>
+<p>r shiny</p>
+<p>rmarkdown</p>
+<p>bookdown</p>
+<div id="continuous-integration" class="section level2">
+<h2><span class="header-section-number">8.1</span> Continuous Integration</h2>
+<p>Travis CI is a programme that is used for continuous integration.</p>
+<p>Continuous Integration is the practice of merging in small code changes frequently - rather than merging in a large change at the end of a development cycle. The goal is to build healthier software by developing and testing in smaller increments. This is where Travis CI comes in.</p>
+<p>As a continuous integration platform, Travis CI supports your development process by automatically building and testing code changes, providing immediate feedback on the success of the change. Travis CI can also automate other parts of your development process by managing deployments and notifications.</p>
+<p><a href="https://docs.travis-ci.com/user/for-beginners/" class="uri">https://docs.travis-ci.com/user/for-beginners/</a></p>
+<p>When you run a build, Travis CI clones your GitHub repository into a brand new virtual environment, and carries out a series of tasks to build and test your code. If one or more of those tasks fails, the build is considered broken. If none of the tasks fail, the build is considered passed, and Travis CI can deploy your code to a web server, or application host.</p>
+<p>CI builds can also automate other parts of your delivery workflow. This means you can have jobs depend on each other with Build Stages, setup notifications, prepare deployments after builds, and many other tasks.</p>
+<p>The simplest way to explain Travis CI is that it runs your program’s tests every time you commit to GitHub (this can be configured in many ways, and you can always disable builds on some branches). The point of this is that you can often discover very quickly if your commit broke something, and fix it before it becomes a problem. I would recommend running Travis CI on every GitHub repo that you have unit tests in and is using a programming language supported by Travis CI. Since setting up Travis CI is very easy, I don’t normally see a good reason not to use it, unless you don’t care if you have passing tests in your program or not. Feel free to leave a comment if you have any more questions. You can read more about Travis CI here.</p>
+<p>Travis CI is a hosted, distributed continuous integration service used to build and test projects hosted at GitHub. Travis CI automatically detects when a commit has been made and pushed to a GitHub repository that is using Travis CI, and each time this happens, it will try to build the project and run tests. This includes commits to all branches, not just to the master branch.</p>
+<p>Another programme you can use in JEnkins.</p>
+<p>Jenkins vs travis CI <a href="https://www.guru99.com/jenkins-vs-travis.html" class="uri">https://www.guru99.com/jenkins-vs-travis.html</a></p>
+<p>What is CI?
+Continuous integration is a software development method where members of the team can integrate their work at least once in a day. In this method, every integration is checked by an automated build to search the error. The CI concept was first introduced over two decades ago to avoid “integration hell,” which happens when integration is put off till the end of a project.</p>
+<p>How CI works?</p>
+<p>Developers write code and commit changes to the shared repository
+After that, the CI server monitors the repository and evaluates all the changes
+CI builds the system and conduct integration and unit tests
+The server releases deployable artifacts
+The Continous integration server assigns a build tag to the version and building code
+Then the CI server reports the team about the successful build. If the tests fail, the server alerts about the event to the development team. The team will fix the issues as fast as is possible.
+What is Travis CI?
+Travis CI was the first CI as a Service tool. It introduced a new approach to building code in the cloud. This CI tool allows the user to sign up, link their repository, build, as well as test their apps.</p>
+<p>Travis CI tool can easily integrate with the common cloud repositories like GitHub and Bitbucket. It offers many automated CI options which cut out the need for a dedicated server as the Travis CI server is hosted in the cloud. This allows you to test in different environments, on various machines, running on different Operating Systems.</p>
+<p>Travis CI is free for open source projects. For commercial projects, you need to purchase an enterprise plan.</p>
+<p>What is Jenkins?
+Jenkins is an award-winning continuous integration tool that monitors executions of deployment cycles. It started as a side project by Sun’s software engineers group. Later it was expanded as one of the popular open source CI tools which help software development teams to automate their deployments.</p>
+<p>Jenkins is a Java-based tool, which means you only need Java Runtime Environment to operate it. Hence, Jenkins can be installed on any operating system where Java runs.</p>
+<p>In this tool, Developers can also specify conditions for customized builds. Jenkins supports a massive plugin archive. This allows developers to alter how Jenkin looks and operates.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="advanced-functions.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="useful-resources.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/08-extras.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 4 Typical Git workflow | RAP Guide for ONS</title>
+  <meta name="description" content="This is a guide for RAP at the ONS" />
+  <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 4 Typical Git workflow | RAP Guide for ONS" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a guide for RAP at the ONS" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 4 Typical Git workflow | RAP Guide for ONS" />
+  
+  <meta name="twitter:description" content="This is a guide for RAP at the ONS" />
+  
+
+<meta name="author" content="Joshua &amp; Catrin" />
+
+
+<meta name="date" content="2019-06-03" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="setting-up-the-project-in-r.html">
+<link rel="next" href="creating-functions-in-r.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A ONS guide to RAP</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="setting-up.html"><a href="setting-up.html"><i class="fa fa-check"></i><b>2</b> Setting up</a><ul>
+<li class="chapter" data-level="2.1" data-path="setting-up.html"><a href="setting-up.html#software-to-install-thorugh-service-desk"><i class="fa fa-check"></i><b>2.1</b> Software to install thorugh Service Desk</a></li>
+<li class="chapter" data-level="2.2" data-path="setting-up.html"><a href="setting-up.html#getting-started-with-ons-gitlab"><i class="fa fa-check"></i><b>2.2</b> Getting started with ONS GitLab</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="setting-up.html"><a href="setting-up.html#set-up-ssh-key"><i class="fa fa-check"></i><b>2.2.1</b> Set up SSH key</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="setting-up.html"><a href="setting-up.html#cloning-project-to-local-laptop"><i class="fa fa-check"></i><b>2.3</b> Cloning project to local laptop</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="setting-up-the-project-in-r.html"><a href="setting-up-the-project-in-r.html"><i class="fa fa-check"></i><b>3</b> Setting up the project in R</a><ul>
+<li class="chapter" data-level="3.1" data-path="setting-up-the-project-in-r.html"><a href="setting-up-the-project-in-r.html#getting-started"><i class="fa fa-check"></i><b>3.1</b> Getting started</a></li>
+<li class="chapter" data-level="3.2" data-path="setting-up-the-project-in-r.html"><a href="setting-up-the-project-in-r.html#r-packages-needed"><i class="fa fa-check"></i><b>3.2</b> R packages needed</a></li>
+<li class="chapter" data-level="3.3" data-path="setting-up-the-project-in-r.html"><a href="setting-up-the-project-in-r.html#package-structure"><i class="fa fa-check"></i><b>3.3</b> Package Structure</a></li>
+<li class="chapter" data-level="3.4" data-path="setting-up-the-project-in-r.html"><a href="setting-up-the-project-in-r.html#creating-the-package"><i class="fa fa-check"></i><b>3.4</b> Creating the package</a></li>
+<li class="chapter" data-level="3.5" data-path="setting-up-the-project-in-r.html"><a href="setting-up-the-project-in-r.html#check-the-package"><i class="fa fa-check"></i><b>3.5</b> Check the package</a></li>
+<li class="chapter" data-level="3.6" data-path="setting-up-the-project-in-r.html"><a href="setting-up-the-project-in-r.html#building-the-package"><i class="fa fa-check"></i><b>3.6</b> Building the package</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="typical-git-workflow.html"><a href="typical-git-workflow.html"><i class="fa fa-check"></i><b>4</b> Typical Git workflow</a><ul>
+<li class="chapter" data-level="4.1" data-path="typical-git-workflow.html"><a href="typical-git-workflow.html#first-push-to-gitlab"><i class="fa fa-check"></i><b>4.1</b> First push to GitLab</a></li>
+<li class="chapter" data-level="4.2" data-path="typical-git-workflow.html"><a href="typical-git-workflow.html#fetching-branches-from-gitlab"><i class="fa fa-check"></i><b>4.2</b> Fetching branches from GitLab</a></li>
+<li class="chapter" data-level="4.3" data-path="typical-git-workflow.html"><a href="typical-git-workflow.html#creating-new-branches-on-gitlab"><i class="fa fa-check"></i><b>4.3</b> Creating new branches on GitLab</a></li>
+<li class="chapter" data-level="4.4" data-path="typical-git-workflow.html"><a href="typical-git-workflow.html#useful-git-commands"><i class="fa fa-check"></i><b>4.4</b> Useful Git commands</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="creating-functions-in-r.html"><a href="creating-functions-in-r.html"><i class="fa fa-check"></i><b>5</b> Creating functions in R</a></li>
+<li class="chapter" data-level="6" data-path="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa.html"><a href="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa.html"><i class="fa fa-check"></i><b>6</b> A template function using futile logger for reading data in (data validation in QA)</a><ul>
+<li class="chapter" data-level="6.1" data-path="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa.html"><a href="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa.html#data-validation-function"><i class="fa fa-check"></i><b>6.1</b> Data Validation function</a></li>
+<li class="chapter" data-level="6.2" data-path="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa.html"><a href="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa.html#futile.logger"><i class="fa fa-check"></i><b>6.2</b> Futile.Logger</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa.html"><a href="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa.html#log_level"><i class="fa fa-check"></i><b>6.2.1</b> <code>log_level</code></a></li>
+<li class="chapter" data-level="6.2.2" data-path="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa.html"><a href="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa.html#log_appender"><i class="fa fa-check"></i><b>6.2.2</b> <code>log_appender</code></a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa.html"><a href="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa.html#the-documentation"><i class="fa fa-check"></i><b>6.3</b> The documentation</a></li>
+<li class="chapter" data-level="6.4" data-path="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa.html"><a href="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa.html#the-function-start"><i class="fa fa-check"></i><b>6.4</b> The function Start</a></li>
+<li class="chapter" data-level="6.5" data-path="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa.html"><a href="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa.html#futile.logger-setup"><i class="fa fa-check"></i><b>6.5</b> <code>futile.logger</code> setup</a></li>
+<li class="chapter" data-level="6.6" data-path="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa.html"><a href="a-template-function-using-futile-logger-for-reading-data-in-data-validation-in-qa.html#your-code"><i class="fa fa-check"></i><b>6.6</b> Your Code</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="advanced-functions.html"><a href="advanced-functions.html"><i class="fa fa-check"></i><b>7</b> Advanced Functions</a><ul>
+<li class="chapter" data-level="7.1" data-path="advanced-functions.html"><a href="advanced-functions.html#continuous-integration"><i class="fa fa-check"></i><b>7.1</b> Continuous Integration</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="useful-resources.html"><a href="useful-resources.html"><i class="fa fa-check"></i><b>8</b> Useful resources</a><ul>
+<li class="chapter" data-level="8.1" data-path="useful-resources.html"><a href="useful-resources.html#gss-rap-resources"><i class="fa fa-check"></i><b>8.1</b> GSS RAP resources</a></li>
+<li class="chapter" data-level="8.2" data-path="useful-resources.html"><a href="useful-resources.html#resources-from-nhs-scotland"><i class="fa fa-check"></i><b>8.2</b> Resources from NHS Scotland</a></li>
+<li class="chapter" data-level="8.3" data-path="useful-resources.html"><a href="useful-resources.html#various-rap-blogs"><i class="fa fa-check"></i><b>8.3</b> Various RAP blogs</a></li>
+<li class="chapter" data-level="8.4" data-path="useful-resources.html"><a href="useful-resources.html#unit-testing"><i class="fa fa-check"></i><b>8.4</b> Unit testing</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">RAP Guide for ONS</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="typical-git-workflow" class="section level1">
+<h1><span class="header-section-number">Chapter 4</span> Typical Git workflow</h1>
+<div id="first-push-to-gitlab" class="section level2">
+<h2><span class="header-section-number">4.1</span> First push to GitLab</h2>
+<p>By now you should have the basic package stored on the D: drive of your local device (we covered this in Chapter 2) and built the basic skeleton of your package in RStudio (Chapter 3).</p>
+<p>Note that all of this will have been done on the master branch of your project. This master branch should only include the structure of the package, code and functions for manipulating and analyzing the data will be stored on individual add-on branches later <strong>(more on this in chapter X).</strong></p>
+<p>Now that you have your basic package, you will need to push your changes to the master branch on GitLab. This is done in three steps:</p>
+<p><strong>1. Adding</strong></p>
+<pre><code>git add . -n</code></pre>
+<p>This shows which files would be added, but doesn’t actually add the files. Once you are happy that these are the files you want to add, you can actually add them using:</p>
+<pre><code>git add . </code></pre>
+<p>And these files will be added to the local Git project on your device.</p>
+<p><strong>2. Committing</strong></p>
+<p>You are now ready to commit the files to the local Git on your device. To do this use the command:</p>
+<pre><code>git commit -m &quot;add a comment&quot;</code></pre>
+<p>You <strong>MUST</strong> add a comment when you commit. The comment should explain the change you have made.</p>
+<p>If you are working independently on a project then this is fine, using the local Git would work for version control. But if working collaboratively you now need to push on to GitLab.</p>
+<p><strong>3. Pushing</strong></p>
+<p>To push changes to the master branch on GitLab use the following command:</p>
+<pre><code>git push origin master -u</code></pre>
+<p>You only need to use this command the first time you are pushing on a new branch. The next time you update this master branch you only need to use the command:</p>
+<pre><code>git push</code></pre>
+<p>With the first push, GitBash will ask for a password for the SSH key. Enter this password, and now you will have added the changes from your master branch on your local device to the remote GitLab repository.</p>
+</div>
+<div id="fetching-branches-from-gitlab" class="section level2">
+<h2><span class="header-section-number">4.2</span> Fetching branches from GitLab</h2>
+<p>As you’re working collaboratively on a project, you’ll need to ensure that you’re working with the latest version of the project. Others may have made changes since you last worked on it. To update your local device with updates made by others, you’ll need to fetch and pull from GitLab.</p>
+<p>To fetch a branch from GitLab you’ll firstly need to ensure that you are located in the project. Do this by using the command <code>cd</code> followed by the location where your project is stored e.g.:</p>
+<pre><code>cd d:/git/CompR</code></pre>
+<p>Now that you are in the correct location, you can fetch the latest version of the project from GitLab. Use the command:</p>
+<pre><code>git fetch</code></pre>
+<p>This will fetch all the branches on the GitLab repository to your local device. If you only want to fetch one branch, then you can use the command, followed by the name of the branch you want to fetch e.g.:</p>
+<pre><code>git fetch master</code></pre>
+<p>Now that the branch(es) are on your local computer, you need to ensure that the version you have just fetched, matches the one on your local device.</p>
+<p>Do this by using the command:</p>
+<pre><code>git pull</code></pre>
+<p>This will ensure that you have the latest version of the project, and are now ready to work on it.</p>
+</div>
+<div id="creating-new-branches-on-gitlab" class="section level2">
+<h2><span class="header-section-number">4.3</span> Creating new branches on GitLab</h2>
+<p>Now that you have the master branch with basic package information, you can start adding other branches to the project. It’s best to create a new branch for each function you want to develop, and only when you’re confident that the function is working and passes all tests, you can then merge this to the master branch.</p>
+<p>Using GitBash you can create a new branch using:</p>
+<pre><code>git checkout -b new_branch</code></pre>
+<p>Note this branch will only exist on your local computer until you push it onto GitLab.</p>
+<p>You can also create a new branch manually on the ONS GitLab (in this case you don’t need to push to GitLab).</p>
+</div>
+<div id="useful-git-commands" class="section level2">
+<h2><span class="header-section-number">4.4</span> Useful Git commands</h2>
+<p>If you forget to fetch and pull, but have made some changes to your version, you won’t be able to pull after making these changes.</p>
+<p>If you haven’t made any significant changes on your local device, and are happy to remove all local changes from your working copy, simply stash them:</p>
+<pre><code>git stash save --keep-index</code></pre>
+<p>And if you don’t need them anymore, you now can drop that stash:</p>
+<pre><code>git stash drop</code></pre>
+<p><a href="https://git-scm.com/book/en/v2">This is a useful guide for understanding Git</a></p>
+<p><span style="color:red">Add more useful commands as we go along - can’t think of any more at the moment but I’m sure there are! </span></p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="setting-up-the-project-in-r.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="creating-functions-in-r.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/04-git_workflow.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
